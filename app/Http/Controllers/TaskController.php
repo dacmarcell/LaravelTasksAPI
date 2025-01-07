@@ -30,10 +30,11 @@ class TaskController extends Controller
 
     static public function update(Request $request, $id){
         $task = Task::findOrFail($id);
+
         $validated = $request->validate([
-            "title"=> "required|string",
-            "description"=> "required|string",
-            "status"=> "required|in:pending,in-progress,finished",
+            "title"=> "nullable|string",
+            "description"=> "nullable|string",
+            "status"=> "nullable|in:pending,in-progress,finished",
         ]);
 
         $task->update($validated);

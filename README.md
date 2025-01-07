@@ -2,13 +2,22 @@
 
 ### Requisitos
 
-Descomentar as seguintes extensões no arquivo `php.ini`:
+-   php v8
+-   postgreSQL v17
+
+#### Lembre-se também de habilitar as seguintes extensões no arquivo `php.ini`:
 
 ```
 extension=fileinfo
 extension=pdo_pgsql
 extension=pgsql
 ```
+
+### Comandos pré execução
+
+-   `php artisan migrate`
+
+-   `php artisan serve`
 
 ## About Laravel
 

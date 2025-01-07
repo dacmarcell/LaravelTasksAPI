@@ -15,7 +15,6 @@ return new class extends Migration
             $table->id();
             $table->string("title");
             $table->text("description");
-            $table->timestamp("created_at")->useCurrent();
             $table->timestamp("finished_at")->nullable();
             $table->enum("status", ["pending","in-progress","finished"]);
             $table->timestamps();

@@ -1,1 +1,28 @@
-GET http://localhost:8000/api/tasks
+### Criar uma nova task (POST)
+POST http://127.0.0.1:8000/api/tasks
+Content-Type: application/json
+
+{
+  "title": "Comprar leite",
+  "description": "Comprar leite para a casa.",
+  "status": "pending"
+}
+
+### Obter todas as tasks (GET)
+GET http://127.0.0.1:8000/api/tasks
+
+### Obter uma task específica (GET)
+GET http://127.0.0.1:8000/api/tasks/1
+
+### Atualizar uma task (PUT)
+PUT http://127.0.0.1:8000/api/tasks/1
+Content-Type: application/json
+
+{
+  "title": "Comprar leite",
+  "description": "Comprar leite e pão.",
+  "status": "in-progress"
+}
+
+### Deletar uma task (DELETE)
+DELETE http://127.0.0.1:8000/api/tasks/1

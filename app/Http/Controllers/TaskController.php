@@ -7,17 +7,17 @@ use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
-    public function index(){
+    static public function index(){
         $tasks = Task::all();
         return response()->json($tasks);
     }
 
-    public function show($id){
+    static public function show($id){
         $task = Task::findOrFail($id);
         return response()->json($task);
     }
 
-    public function store(Request $request){
+    static public function store(Request $request){
         $validated = $request->validate([
             "title" => "required|string",
             "description" => "required|string",
@@ -28,7 +28,7 @@ class TaskController extends Controller
         return response()->json($task, 201);
     }
 
-    public function update(Request $request, $id){
+    static public function update(Request $request, $id){
         $task = Task::findOrFail($id);
         $validated = $request->validate([
             "title"=> "required|string",
@@ -41,7 +41,7 @@ class TaskController extends Controller
         return response()->json($task);
     }
 
-    public function destroy($id){
+    static public function destroy($id){
         $task = Task::findOrFail($id);
         $task->delete();
 

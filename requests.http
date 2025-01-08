@@ -1,3 +1,10 @@
+
+### Obter todas as tasks (GET)
+GET http://127.0.0.1:8000/api/tasks
+
+### Obter uma task específica (GET)
+GET http://127.0.0.1:8000/api/tasks/1
+
 ### Criar uma nova task (POST)
 POST http://127.0.0.1:8000/api/tasks
 Content-Type: application/json
@@ -5,14 +12,18 @@ Content-Type: application/json
 {
   "title": "Comprar leite",
   "description": "Comprar leite para a casa.",
-  "status": "pending"
+  "status": "pending",
+  "category_name": "Compras"
 }
 
-### Obter todas as tasks (GET)
-GET http://127.0.0.1:8000/api/tasks
+### Conectar a uma categoria (POST)
+POST http://127.0.0.1:8000/api/tasks/1/categories
+Accept: application/json
+Content-Type: application/json
 
-### Obter uma task específica (GET)
-GET http://127.0.0.1:8000/api/tasks/1
+{
+  "category_id": 1
+}
 
 ### Atualizar uma task (PUT)
 PUT http://127.0.0.1:8000/api/tasks/1
@@ -26,3 +37,18 @@ Content-Type: application/json
 
 ### Deletar uma task (DELETE)
 DELETE http://127.0.0.1:8000/api/tasks/1
+
+### Obter categorias (GET)
+
+GET http://127.0.0.1:8000/api/categories
+Accept: application/json
+
+### Criar uma nova categoria (POST)
+POST http://127.0.0.1:8000/api/categories
+Accept: application/json
+Content-Type: application/json
+
+{
+  "name": "Jogos",
+  "task_id": 1
+}

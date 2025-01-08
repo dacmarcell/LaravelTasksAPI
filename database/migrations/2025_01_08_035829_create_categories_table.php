@@ -14,10 +14,8 @@ return new class extends Migration
         Schema::create('categories', function (Blueprint $table) {
             $table->id();
             $table->string("name");
-            $table->unsignedBigInteger("task_id");
+            $table->foreignId("task_id")->constrained()->onDelete('cascade');
             $table->timestamps();
-
-            $table->foreign("task_id")->references("id")->on("tasks")->onDelete("cascade");
         });
     }
 

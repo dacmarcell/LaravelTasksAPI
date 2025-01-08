@@ -2,18 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
 class TaskController extends Controller
 {
     static public function index(){
-        $tasks = Task::all();
+        $tasks = Task::with('categories')->get();
         return response()->json($tasks);
     }
 
     static public function show($id){
-        $task = Task::findOrFail($id);
+        $task = Task::find($id);
+
+        if(!$task){
+            return response()->json(["message" => "Task not found"], 404);
+        }
+
         return response()->json($task);
     }
 
@@ -21,11 +27,27 @@ class TaskController extends Controller
         $validated = $request->validate([
             "title" => "required|string",
             "description" => "required|string",
-            "status" => "required|in:pending,in-progress,finished"
+            "status" => "required|in:pending,in-progress,finished",
+            "category_name" => "required|string",
         ]);
 
-        $task = Task::create($validated);
-        return response()->json($task, 201);
+        $task = Task::create([
+            "title" => $validated["title"],
+            "description" => $validated["description"],
+            "status" => $validated["status"],
+        ]);
+
+        $category = Category::firstOrCreate(
+            ['name' => $validated['category_name']],
+            [
+                'name' => $validated['category_name'],
+                'task_id' => $task->id
+            ]
+        );
+
+        $task->categories()->save($category);
+
+        return response()->json($task->load('categories'), 201);
     }
 
     static public function update(Request $request, $id){

@@ -21,10 +21,19 @@ class CategoryController extends Controller
     static public function store(Request $request){
         $validated = $request->validate([
             "name" => "required|string",
-            "task_id" => "required|int",
+            "task_id" => "required|integer|exists:tasks,id"
         ]);
 
-        $category = Category::create($validated);
+        $task = Task::find($validated["task_id"]);
+        if(!$task){
+            return response()->json(["message" => "Task not found"], 404);
+        }
+
+        $category = Category::create([
+            "name" => $validated["name"],
+            "task_id" => $task->id
+        ]);
+
         return response()->json($category, 201);
     }
 

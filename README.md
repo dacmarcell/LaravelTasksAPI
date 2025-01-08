@@ -1,6 +1,8 @@
 # LaravelTasksAPI
 
-Projeto CRUD de Tarefas em Laravel
+Projeto CRUD de Tarefas e categorias em Laravel
+
+![mer](https://github-production-user-asset-6210df.s3.amazonaws.com/83461178/401011446-76980cb1-5ca3-4d6a-b0fe-71aad72897b1.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20250108%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20250108T050937Z&X-Amz-Expires=300&X-Amz-Signature=5e7112ff8417d77d809033a3fc228fae1ba7679505bd965d41eb311cd5695b73&X-Amz-SignedHeaders=host)
 
 ## Stack
 

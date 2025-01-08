@@ -17,4 +17,8 @@ class Task extends Model
         'status',
     ];
 
+    public function categories(){
+        return $this->hasMany(Category::class);
+    }
+
 }
